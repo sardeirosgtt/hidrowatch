@@ -26,7 +26,7 @@ public class LeituraController {
 
     @PostMapping
     public Leitura salvar(@RequestBody Leitura leitura) {
-        return leituraService.salvarLeitura(leitura);
+        return leituraService.salvarLeituraComCalculo(leitura);
     }
 
     @PutMapping("/{id}")
