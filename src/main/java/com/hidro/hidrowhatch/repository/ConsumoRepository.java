@@ -3,9 +3,8 @@ package com.hidro.hidrowhatch.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.hidro.hidrowhatch.model.Usuario;
+import com.hidro.hidrowhatch.model.Consumo;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-
+public interface ConsumoRepository extends JpaRepository<Consumo, Long> {
 }

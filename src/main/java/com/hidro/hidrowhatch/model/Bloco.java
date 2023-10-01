@@ -1,10 +1,15 @@
 package com.hidro.hidrowhatch.model;
 
+import java.util.List;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -17,9 +22,14 @@ public class Bloco {
 	
 	@Nonnull
 	private String numero;
-	@Nonnull
-	private int qtdApt;
+
 	@Nonnull
 	private int qtdAndar;
 	
+	@ManyToOne
+    @JoinColumn(name = "condominio_id")
+    private Condominios condominios;
+
+    @OneToMany(mappedBy = "bloco")
+    private List<Apartamento> apartamentos;
 }
