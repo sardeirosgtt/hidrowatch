@@ -5,27 +5,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="usuario")
 @Data
-public class Usuario {
-
+public class Condominios {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Nonnull
-	private String cpf;
+	private String nome;
 	
 	@Nonnull
-	private String nome;
+	private String cnpj;
 	
 	@Nonnull
 	private String email;
 	
-	
-	
+	@Nonnull
+	private String endereco;
+
 }
