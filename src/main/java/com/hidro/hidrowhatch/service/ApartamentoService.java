@@ -45,12 +45,10 @@ public class ApartamentoService {
     }
     
     public List<Apartamento> buscarApartamentosPorCondominio(Long condominioId) {
-        // Use o repositório para buscar todos os apartamentos de um determinado condomínio
         return apartamentoRepository.findByCondominioId(condominioId);
     }
     
     public List<Apartamento> buscarApartamentosPorUsuario(Long usuarioId) {
-        // Use o repositório para buscar todos os apartamentos do usuário
         return apartamentoRepository.findByUsuarioId(usuarioId);
     }
 }

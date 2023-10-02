@@ -16,7 +16,4 @@ public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> 
     List<Apartamento> findByCondominioId(Long condominioId);
 	
 	List<Apartamento> findByUsuarioId(Long usuarioId);
-
-	 
-	
 }
