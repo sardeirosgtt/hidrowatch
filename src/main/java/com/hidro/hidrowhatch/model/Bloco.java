@@ -3,6 +3,7 @@ package com.hidro.hidrowhatch.model;
 import java.util.List;
 
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

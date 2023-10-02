@@ -33,8 +33,6 @@ public class HidrometroService {
         Hidrometro hidrometroExistente = hidrometroRepository.findById(id).orElse(null);
         if (hidrometroExistente != null) {
             hidrometroExistente.setNumero(novoHidrometro.getNumero());
-            hidrometroExistente.setLeitura(novoHidrometro.getLeitura());
-            hidrometroExistente.setDataConsumo(novoHidrometro.getDataConsumo());
             hidrometroExistente.setApartamento(novoHidrometro.getApartamento());
             return hidrometroRepository.save(hidrometroExistente);
         }
