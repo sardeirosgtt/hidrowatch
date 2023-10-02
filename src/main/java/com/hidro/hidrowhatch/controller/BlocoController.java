@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hidro.hidrowhatch.dto.BlocoDTO;
+import com.hidro.hidrowhatch.dto.BlocoMapper;
 import com.hidro.hidrowhatch.model.Bloco;
 import com.hidro.hidrowhatch.service.BlocoService;
 
@@ -23,13 +25,15 @@ public class BlocoController {
     private BlocoService blocoService;
 
     @GetMapping
-    public List<Bloco> listar() {
-        return blocoService.listarBlocos();
+    public List<BlocoDTO> listar() {
+        List<Bloco> blocos = blocoService.listarBlocos();
+        return BlocoMapper.toBlocoDTOList(blocos);
     }
 
     @GetMapping("/{id}")
-    public Bloco buscar(@PathVariable Long id) {
-        return blocoService.buscarBlocoPorId(id);
+    public BlocoDTO buscar(@PathVariable Long id) {
+        Bloco bloco = blocoService.buscarBlocoPorId(id);
+        return BlocoMapper.toBlocoDTO(bloco);
     }
 
     @PostMapping

@@ -3,6 +3,7 @@ package com.hidro.hidrowhatch.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hidro.hidrowhatch.dto.CondominioDTO;
+import com.hidro.hidrowhatch.dto.CondominioMapper;
+import com.hidro.hidrowhatch.dto.UsuarioDTO;
+import com.hidro.hidrowhatch.dto.UsuarioMapper;
 import com.hidro.hidrowhatch.model.Condominios;
+import com.hidro.hidrowhatch.model.Usuario;
 import com.hidro.hidrowhatch.service.CondominioService;
 
 
@@ -24,13 +30,19 @@ public class CondominioController {
     private CondominioService condominioService;
 
     @GetMapping
-    public List<Condominios> listar() {
-        return condominioService.listarCondominios();
+    public ResponseEntity<List<CondominioDTO>> listar() {
+    	List<Condominios> condominios = condominioService.listarCondominios();
+        List<CondominioDTO> condominioDTO = CondominioMapper.toCondominioDTOList(condominios);
+        return ResponseEntity.ok(condominioDTO);
+        
+        
     }
 
     @GetMapping("/{id}")
-    public Condominios buscar(@PathVariable Long id) {
-        return condominioService.buscarCondominiosPorId(id);
+    public ResponseEntity<CondominioDTO> buscar(@PathVariable Long id) {
+    	Condominios condominios = condominioService.buscarCondominiosPorId(id);
+        CondominioDTO condominioDTO = CondominioMapper.toCondominioDTO(condominios);
+        return ResponseEntity.ok(condominioDTO);
     }
 
     @PostMapping
