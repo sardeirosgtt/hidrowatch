@@ -2,7 +2,8 @@ package com.hidro.hidrowhatch.model;
 
 import java.util.List;
 
-import jakarta.annotation.Nonnull;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,6 +35,7 @@ public class Apartamento {
     
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @JsonBackReference
     private Usuario usuario;
     
     @OneToMany(mappedBy = "apartamento")

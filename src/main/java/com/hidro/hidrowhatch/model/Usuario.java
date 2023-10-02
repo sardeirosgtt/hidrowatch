@@ -2,6 +2,8 @@ package com.hidro.hidrowhatch.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,7 @@ public class Usuario {
 	private String email;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonManagedReference
     private List<Apartamento> apartamentos;
 	
 	

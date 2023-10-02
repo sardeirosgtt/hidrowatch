@@ -19,7 +19,7 @@ INSERT INTO condominios (nome, cnpj, email, endereco) VALUES
     ('Condomínio 2', '9876543210', 'condo2@example.com', 'Endereço 2');
 
 -- Inserindo dados na tabela Bloco
-INSERT INTO bloco (numero, qtdAndar, condominio_id) VALUES
+INSERT INTO bloco (numero, qtd_Andar, condominio_id) VALUES
     ('Bloco A', 5, 1),
     ('Bloco B', 6, 1),
     ('Bloco C', 4, 2);
@@ -40,22 +40,22 @@ INSERT INTO apartamento (numero, andar, bloco_id, usuario_id) VALUES
     ('302', 3, 2, 12);
 
 -- Inserindo dados na tabela Hidrometro
-INSERT INTO hidrometro (numero, leitura, dataConsumo, apartamento_id) VALUES
-    ('H1-101', 100.0, '2023-10-10', 1),
-    ('H1-102', 95.0, '2023-10-10', 2),
-    ('H1-201', 220.0, '2023-10-10', 3),
-    ('H1-202', 215.0, '2023-10-10', 4),
-    ('H1-301', 330.0, '2023-10-10', 5),
-    ('H1-302', 325.0, '2023-10-10', 6),
-    ('H2-101', 150.0, '2023-10-10', 7),
-    ('H2-102', 145.0, '2023-10-10', 8),
-    ('H2-201', 270.0, '2023-10-10', 9),
-    ('H2-202', 265.0, '2023-10-10', 10),
-    ('H2-301', 380.0, '2023-10-10', 11),
-    ('H2-302', 375.0, '2023-10-10', 12);
+INSERT INTO hidrometro (numero, apartamento_id) VALUES
+    ('H1-101', 1),
+    ('H1-102', 2),
+    ('H1-201', 3),
+    ('H1-202', 4),
+    ('H1-301', 5),
+    ('H1-302', 6),
+    ('H2-101', 7),
+    ('H2-102', 8),
+    ('H2-201', 9),
+    ('H2-202', 10),
+    ('H2-301', 11),
+    ('H2-302', 12);
 
 -- Inserindo dados na tabela Leitura
-INSERT INTO leitura (valor, dataLeitura, hidrometro_id) VALUES
+INSERT INTO leitura (valor, data_Leitura, hidrometro_id) VALUES
     (110.0, '2023-10-15', 1),
     (105.0, '2023-10-15', 2),
     (230.0, '2023-10-15', 3),
@@ -70,7 +70,7 @@ INSERT INTO leitura (valor, dataLeitura, hidrometro_id) VALUES
     (385.0, '2023-10-15', 12);
 
 -- Inserindo dados na tabela Consumo
-INSERT INTO consumo (valor, dataConsumo, apartamento_id) VALUES
+INSERT INTO consumo (valor, data_Consumo, apartamento_id) VALUES
     (10.0, '2023-10-15', 1),
     (10.0, '2023-10-15', 2),
     (10.0, '2023-10-15', 3),
