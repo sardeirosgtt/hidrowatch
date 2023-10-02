@@ -46,4 +46,14 @@ public class ApartamentoController {
     public void deletar(@PathVariable Long id) {
         apartamentoService.deletarApartamento(id);
     }
+    
+    @GetMapping("por-condominio/{id}")
+    public List<Apartamento> buscarApartamentosPorCondominio(@PathVariable Long id) {
+    	return  apartamentoService.buscarApartamentosPorCondominio(id);
+    }
+    
+    @GetMapping("/por-usuario/{usuarioId}")
+    public List<Apartamento> buscarApartamentosPorUsuario(@PathVariable Long usuarioId) {
+        return apartamentoService.buscarApartamentosPorUsuario(usuarioId);
+    }
 }
