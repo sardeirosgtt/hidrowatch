@@ -1,15 +1,21 @@
 package com.hidro.hidrowhatch.controller;
 
-import com.hidro.hidrowhatch.dto.BlocoMapper;
-import com.hidro.hidrowhatch.dto.hidrometroDTO;
-import com.hidro.hidrowhatch.dto.hidrometroMapper;
-import com.hidro.hidrowhatch.model.Bloco;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hidro.hidrowhatch.dto.HidrometroDTO;
+import com.hidro.hidrowhatch.dto.HidrometroMapper;
 import com.hidro.hidrowhatch.model.Hidrometro;
 import com.hidro.hidrowhatch.service.HidrometroService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/hidrometros")
@@ -19,9 +25,9 @@ public class HidrometroController {
     private HidrometroService hidrometroService;
 
     @GetMapping
-    public List<hidrometroDTO> listar() {
+    public List<HidrometroDTO> listar() {
         List<Hidrometro> hidrometro = hidrometroService.listarHidrometros();
-        return hidrometroMapper.toHidrometroDTOList(hidrometro);
+        return HidrometroMapper.toHidrometroDTOList(hidrometro);
     }
 
     @GetMapping("/{id}")

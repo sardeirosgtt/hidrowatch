@@ -7,7 +7,12 @@ import com.hidro.hidrowhatch.model.Bloco;
 
 public class BlocoMapper {
 	public static BlocoDTO toBlocoDTO(Bloco bloco) {
-	    return new BlocoDTO(bloco.getId(), bloco.getNumero(), bloco.getQtdAndar(), bloco.getCondominios().getId());
+	    BlocoDTO dto =  new BlocoDTO();
+	    		dto.setId(bloco.getId()); 
+	    		dto.setNumero(bloco.getNumero());	
+	    		dto.setQtdAndar(bloco.getQtdAndar());
+	    		dto.setCondominio(CondominioMapper.toCondominioDTO(bloco.getCondominios()));
+	    		return dto;
 	}
 
 	public static List<BlocoDTO> toBlocoDTOList(List<Bloco> blocos) {

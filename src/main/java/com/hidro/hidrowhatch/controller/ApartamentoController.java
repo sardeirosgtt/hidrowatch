@@ -33,8 +33,9 @@ public class ApartamentoController {
     }
 
     @GetMapping("/{id}")
-    public Apartamento buscar(@PathVariable Long id) {
-        return apartamentoService.buscarApartamentoPorId(id);
+    public ApartamentoDTO buscar(@PathVariable Long id) {
+    	Apartamento apartamento = apartamentoService.buscarApartamentoPorId(id);
+        return ApartamentoMapper.toApartamentoDTO(apartamento);
     }
 
     @PostMapping

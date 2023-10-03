@@ -18,13 +18,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class hidrometroDTO {
+public class HidrometroDTO {
     
 
     private Long id;
     private String numero;
-
-    private ApartamentoDTO apartamento;
     
-    private List<LeituraDto> leituras;
+    private ApartamentoDTO apartamento;
 }
