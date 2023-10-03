@@ -1,5 +1,10 @@
 package com.hidro.hidrowhatch.controller;
 
+import com.hidro.hidrowhatch.dto.ApartamentoDTO;
+import com.hidro.hidrowhatch.dto.ApartamentoMapper;
+import com.hidro.hidrowhatch.dto.LeituraDto;
+import com.hidro.hidrowhatch.dto.LeituraMapper;
+import com.hidro.hidrowhatch.model.Apartamento;
 import com.hidro.hidrowhatch.model.Leitura;
 import com.hidro.hidrowhatch.service.LeituraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +20,17 @@ public class LeituraController {
     private LeituraService leituraService;
 
     @GetMapping
-    public List<Leitura> listar() {
-        return leituraService.listarLeituras();
+    public List<LeituraDto> listar() {
+        List<Leitura> leituras = leituraService.listarLeituras();
+        return LeituraMapper.toLeituraList(leituras);
     }
 
     @GetMapping("/{id}")
-    public Leitura buscar(@PathVariable Long id) {
-        return leituraService.buscarLeituraPorId(id);
+    public LeituraDto buscar(@PathVariable Long id) {
+    	Leitura leitura = leituraService.buscarLeituraPorId(id);
+        return LeituraMapper.toLeituraDto(leitura);
     }
+
 
     @PostMapping
     public Leitura salvar(@RequestBody Leitura leitura) {

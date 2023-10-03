@@ -8,7 +8,12 @@ import com.hidro.hidrowhatch.model.Leitura;
 
 public class LeituraMapper {
 	public static LeituraDto toLeituraDto(Leitura leitura) {
-	    return new LeituraDto(leitura.getId(), leitura.getValor(), leitura.getDataLeitura(), leitura.getHidrometro());
+	    LeituraDto dto = new LeituraDto();
+		dto.setId(leitura.getId());
+		dto.setValor(leitura.getValor());
+		dto.setDataLeitura(leitura.getDataLeitura());
+		dto.setHidrometro(HidrometroMapper.toHidrometroDTO(leitura.getHidrometro()));
+		return dto; 
 	}
 
 	public static List<LeituraDto> toLeituraList(List<Leitura> leitura) {

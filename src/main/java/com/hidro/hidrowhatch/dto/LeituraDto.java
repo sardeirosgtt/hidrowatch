@@ -2,6 +2,8 @@ package com.hidro.hidrowhatch.dto;
 
 import java.time.LocalDateTime;
 
+import java.util.List;
+
 import com.hidro.hidrowhatch.model.Hidrometro;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +20,6 @@ public class LeituraDto {
     private Long id;
     private Double valor;
     private LocalDateTime dataLeitura;
-    private Hidrometro hidrometro;
+    private HidrometroDTO hidrometro;
 
 }
