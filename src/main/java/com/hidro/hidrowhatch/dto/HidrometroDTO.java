@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hidro.hidrowhatch.model.Apartamento;
 import com.hidro.hidrowhatch.model.Leitura;
+import com.hidro.hidrowhatch.model.TipoHidrometro;
 
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -23,6 +24,6 @@ public class HidrometroDTO {
 
     private Long id;
     private String numero;
-    
+    private TipoHidrometro tipo;
     private ApartamentoDTO apartamento;
 }

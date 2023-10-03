@@ -55,6 +55,10 @@ public class UsuarioController {
     public void deletar(@PathVariable Long id) {
         service.deletar(id);
     }
+    
+    public Boolean validarCampos(Usuario usuario) {
+    	return true;
+    }
 }
 
 
