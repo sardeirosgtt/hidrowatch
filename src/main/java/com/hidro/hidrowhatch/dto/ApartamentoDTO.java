@@ -1,5 +1,7 @@
 package com.hidro.hidrowhatch.dto;
 
+import com.hidro.hidrowhatch.model.Usuario;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,5 +17,5 @@ public class ApartamentoDTO {
 	    private String numero;
 	    private int andar;
 	    private BlocoDTO bloco;
-	    private Long usuarioId; 
+	    private UsuarioDTO usuario; 
 }

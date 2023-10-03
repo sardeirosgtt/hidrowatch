@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hidro.hidrowhatch.dto.ApartamentoDTO;
+import com.hidro.hidrowhatch.dto.ApartamentoMapper;
+import com.hidro.hidrowhatch.dto.BlocoMapper;
 import com.hidro.hidrowhatch.model.Apartamento;
+import com.hidro.hidrowhatch.model.Bloco;
 import com.hidro.hidrowhatch.service.ApartamentoService;
 
 @RestController
@@ -23,8 +27,9 @@ public class ApartamentoController {
     private ApartamentoService apartamentoService;
 
     @GetMapping
-    public List<Apartamento> listar() {
-        return apartamentoService.listarApartamentos();
+    public List<ApartamentoDTO> listar() {
+    	List<Apartamento> apartamento = apartamentoService.listarApartamentos();
+        return ApartamentoMapper.toApartamentoDTOList(apartamento);
     }
 
     @GetMapping("/{id}")

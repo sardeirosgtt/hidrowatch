@@ -3,16 +3,20 @@ package com.hidro.hidrowhatch.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.hidro.hidrowhatch.model.Bloco;
+import com.hidro.hidrowhatch.model.Apartamento;
 
 public class ApartamentoMapper {
-	
-	public static BlocoDTO toBlocoDTO(Bloco bloco) {
-	    return new BlocoDTO(bloco.getId(), bloco.getNumero(), bloco.getQtdAndar(), bloco.getCondominios().getId());
-	}
+    public static ApartamentoDTO toApartamentoDTO(Apartamento apartamento) {
+        ApartamentoDTO dto = new ApartamentoDTO();
+        dto.setId(apartamento.getId());
+        dto.setNumero(apartamento.getNumero());
+        dto.setAndar(apartamento.getAndar());
+        dto.setBloco(BlocoMapper.toBlocoDTO(apartamento.getBloco()));
+        dto.setUsuario(UsuarioMapper.toUsuarioDTO(apartamento.getUsuario()));
+        return dto;
+    }
 
-	public static List<BlocoDTO> toBlocoDTOList(List<Bloco> blocos) {
-	    return blocos.stream().map(BlocoMapper::toBlocoDTO).collect(Collectors.toList());
-	}
-
+    public static List<ApartamentoDTO> toApartamentoDTOList(List<Apartamento> apartamentos) {
+        return apartamentos.stream().map(ApartamentoMapper::toApartamentoDTO).collect(Collectors.toList());
+    }
 }
