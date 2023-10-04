@@ -45,6 +45,8 @@ public class Usuario {
 	@NotEmpty
 	private String email;
 	
+	@NotNull
+	@NotEmpty
 	@OneToMany(mappedBy = "usuario")
 	@JsonManagedReference
     private List<Apartamento> apartamentos;

@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,18 +24,28 @@ public class Condominios {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
 	@Nonnull
 	private String nome;
 	
+	@NotNull
+	@NotEmpty
 	@Nonnull
 	private String cnpj;
 	
+	@NotNull
+	@NotEmpty
 	@Nonnull
 	private String email;
 	
+	@NotNull
+	@NotEmpty
 	@Nonnull
 	private String endereco;
 
+	@NotNull
+	@NotEmpty
 	@OneToMany(mappedBy = "condominios")
     private List<Bloco> blocos;
 }

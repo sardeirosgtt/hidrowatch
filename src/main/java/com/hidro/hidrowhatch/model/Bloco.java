@@ -11,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,16 +27,24 @@ public class Bloco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
 	@Nonnull
 	private String numero;
 
+	@NotNull
+	@NotEmpty
 	@Nonnull
 	private int qtdAndar;
 	
+	@NotNull
+	@NotEmpty
 	@ManyToOne
     @JoinColumn(name = "condominio_id")
     private Condominios condominios;
 
+	@NotNull
+	@NotEmpty
     @OneToMany(mappedBy = "bloco")
     private List<Apartamento> apartamentos;
 }

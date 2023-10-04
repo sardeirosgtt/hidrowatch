@@ -11,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,15 +27,23 @@ public class Hidrometro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+	@NotEmpty
     private String numero;
     
+    @NotNull
+	@NotEmpty
     @Enumerated(EnumType.STRING)
     private TipoHidrometro tipo;
 
+    @NotNull
+	@NotEmpty
     @ManyToOne
     @JoinColumn(name = "apartamento_id")
     private Apartamento apartamento;
     
+    @NotNull
+	@NotEmpty
     @OneToMany(mappedBy = "hidrometro")
     private List<Leitura> leituras;
 }
