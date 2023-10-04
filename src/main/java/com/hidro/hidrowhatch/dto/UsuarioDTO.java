@@ -1,5 +1,7 @@
 package com.hidro.hidrowhatch.dto;
 
+import com.hidro.hidrowhatch.model.UsuarioRole;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,4 +16,6 @@ public class UsuarioDTO {
     private String cpf;
     private String nome;
     private String email;
+    private String password;
+    private UsuarioRole role;
 }

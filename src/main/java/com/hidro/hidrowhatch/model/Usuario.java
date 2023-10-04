@@ -55,8 +55,7 @@ public class Usuario implements UserDetails {
 	
 	private UsuarioRole role;
 	
-	@NotNull
-	@NotEmpty
+
 	@OneToMany(mappedBy = "usuario")
 	@JsonManagedReference
     private List<Apartamento> apartamentos;
@@ -99,7 +98,6 @@ public class Usuario implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
 	
 	
 }

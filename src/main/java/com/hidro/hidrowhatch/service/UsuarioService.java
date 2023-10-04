@@ -2,6 +2,7 @@ package com.hidro.hidrowhatch.service;
 
 import java.util.List;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.hidro.hidrowhatch.model.Usuario;
@@ -30,6 +31,11 @@ public class UsuarioService {
     @org.springframework.transaction.annotation.Transactional(readOnly = true)
     public Usuario buscarPorId(Long id) {
         return repository.findById(id).orElse(null);
+    }
+    
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+    public UserDetails buscarPorEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     @org.springframework.transaction.annotation.Transactional
