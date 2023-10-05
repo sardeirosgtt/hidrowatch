@@ -1,5 +1,6 @@
 package com.hidro.hidrowhatch.Seguranca;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,10 +12,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class ConfiguraSeguranca {
+	
+	@Autowired
+	SecurityFilter securityFilter;
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -22,11 +27,12 @@ public class ConfiguraSeguranca {
 				.csrf(csfr-> csfr.disable())
 				.sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
-						.requestMatchers(HttpMethod.POST,"/usuarios/login").permitAll()
-						.requestMatchers(HttpMethod.GET,"/usuarios").permitAll()//hasRole("ADMIN")
+						.requestMatchers(HttpMethod.POST,"/usuarios").authenticated()
+						.requestMatchers(HttpMethod.POST,"/usuarios/login").authenticated()
+						.requestMatchers(HttpMethod.GET,"/usuarios").authenticated()
 						.anyRequest().authenticated()
 						)
+				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				
 				.build();
 	}

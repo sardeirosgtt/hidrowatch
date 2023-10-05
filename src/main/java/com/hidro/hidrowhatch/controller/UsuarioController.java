@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hidro.hidrowhatch.Seguranca.TokenService;
 import com.hidro.hidrowhatch.dto.AuthenticationDTO;
+import com.hidro.hidrowhatch.dto.LoginResponseDTO;
 import com.hidro.hidrowhatch.dto.UsuarioDTO;
 import com.hidro.hidrowhatch.dto.UsuarioMapper;
 import com.hidro.hidrowhatch.model.Usuario;
@@ -32,6 +34,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private TokenService tokenService;
 	
 	private final UsuarioService service;
 	
@@ -81,7 +86,9 @@ public class UsuarioController {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
 		
-		return ResponseEntity.ok().build();
+		var token = tokenService.generetedToken( (Usuario) auth.getPrincipal() );
+
+		return ResponseEntity.ok(new LoginResponseDTO(token));
 		
 	}
 }
