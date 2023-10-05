@@ -27,9 +27,8 @@ public class ConfiguraSeguranca {
 				.csrf(csfr-> csfr.disable())
 				.sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers(HttpMethod.POST,"/usuarios").authenticated()
-						.requestMatchers(HttpMethod.POST,"/usuarios/login").authenticated()
-						.requestMatchers(HttpMethod.GET,"/usuarios").authenticated()
+						.requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
+						.requestMatchers(HttpMethod.POST,"/usuarios/login").permitAll()
 						.anyRequest().authenticated()
 						)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
