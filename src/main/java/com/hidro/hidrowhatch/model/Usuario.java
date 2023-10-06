@@ -2,11 +2,10 @@ package com.hidro.hidrowhatch.model;
 
 import java.util.List;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,13 +25,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Usuario {
 
-	@Id
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Nonnull
 	@NotNull
 	@NotEmpty
+	@Id
 	private String cpf;
 	
 	@Nonnull
@@ -43,6 +43,7 @@ public class Usuario {
 	@Nonnull
 	@NotNull
 	@NotEmpty
+	@Column(unique = true)
 	private String email;
 	
 	@OneToMany(mappedBy = "usuario")

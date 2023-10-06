@@ -3,6 +3,7 @@ package com.hidro.hidrowhatch.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hidro.hidrowhatch.dto.CondominioDTO;
 import com.hidro.hidrowhatch.dto.CondominioMapper;
-import com.hidro.hidrowhatch.dto.UsuarioDTO;
-import com.hidro.hidrowhatch.dto.UsuarioMapper;
 import com.hidro.hidrowhatch.model.Condominios;
-import com.hidro.hidrowhatch.model.Usuario;
 import com.hidro.hidrowhatch.service.CondominioService;
+
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -45,9 +45,11 @@ public class CondominioController {
         return ResponseEntity.ok(condominioDTO);
     }
 
-    @PostMapping
-    public Condominios salvar(@RequestBody Condominios condominios) {
-        return condominioService.salvarCondominios(condominios);
+    @PostMapping("/criar")
+    public ResponseEntity<CondominioDTO> criarCondominio(@RequestBody @Valid CriarCondominioRequest request) {
+        condominioService.criarCondominioComConfiguracao(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
