@@ -3,7 +3,6 @@ package com.hidro.hidrowhatch.model;
 import java.util.Collection;
 import java.util.List;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +37,7 @@ public class Usuario implements UserDetails {
 	@Nonnull
 	@NotNull
 	@NotEmpty
+	
 	private String cpf;
 	
 	@Nonnull
@@ -47,6 +48,7 @@ public class Usuario implements UserDetails {
 	@Nonnull
 	@NotNull
 	@NotEmpty
+	@Column(unique = true)
 	private String email;
 	
 	
