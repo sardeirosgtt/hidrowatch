@@ -37,14 +37,12 @@ public class Bloco {
 	@Nonnull
 	private int qtdAndar;
 	
-	@NotNull
-	@NotEmpty
+
 	@ManyToOne
     @JoinColumn(name = "condominio_id")
     private Condominios condominios;
 
-	@NotNull
-	@NotEmpty
+
     @OneToMany(mappedBy = "bloco")
     private List<Apartamento> apartamentos;
 }

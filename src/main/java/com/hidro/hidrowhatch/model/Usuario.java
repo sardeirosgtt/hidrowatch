@@ -33,21 +33,16 @@ public class Usuario implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Nonnull
-	@NotNull
-	@NotEmpty
+
 	
 	private String cpf;
 	
-	@Nonnull
-	@NotNull
-	@NotEmpty
+
+
 	private String nome;
 	
-	@Nonnull
-	@NotNull
-	@NotEmpty
+
+
 	@Column(unique = true)
 	private String email;
 	
@@ -59,7 +54,6 @@ public class Usuario implements UserDetails {
 	
 
 	@OneToMany(mappedBy = "usuario")
-	@JsonManagedReference
     private List<Apartamento> apartamentos;
 
 	

@@ -33,7 +33,10 @@ public class ConfiguraSeguranca {
 						)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				
-				.build();
+				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                .cors() // Habilita a configuração de CORS
+                .and()
+                .build();
 	}
 	
 	@Bean

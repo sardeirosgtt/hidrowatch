@@ -33,8 +33,7 @@ public class Leitura {
 	@NotEmpty
     private LocalDateTime dataLeitura;
     
-    @NotNull
-	@NotEmpty
+ 
     @ManyToOne
     @JoinColumn(name = "hidrometro_id")
     private Hidrometro hidrometro;

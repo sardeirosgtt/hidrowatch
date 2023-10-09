@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hidro.hidrowhatch.model.Apartamento;
+import com.hidro.hidrowhatch.model.Bloco;
 import com.hidro.hidrowhatch.repository.ApartamentoRepository;
 
 @Service
@@ -50,5 +51,8 @@ public class ApartamentoService {
     
     public List<Apartamento> buscarApartamentosPorUsuario(Long usuarioId) {
         return apartamentoRepository.findByUsuarioId(usuarioId);
+    }
+    public List<Apartamento> listarApartamentosPorBloco(Long blocoId) {
+        return apartamentoRepository.findByBlocoId(blocoId);
     }
 }

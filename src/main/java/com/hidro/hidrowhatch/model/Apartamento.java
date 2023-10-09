@@ -35,21 +35,17 @@ public class Apartamento {
 	@NotEmpty
     private Integer andar;
 
-	@NotNull
-	@NotEmpty
+
     @ManyToOne
     @JoinColumn(name = "bloco_id")
     private Bloco bloco;
     
-	@NotNull
-	@NotEmpty
-    @ManyToOne
+	
+    @ManyToOne(optional = true)
     @JoinColumn(name = "usuario_id")
-    @JsonBackReference
     private Usuario usuario;
     
-	@NotNull
-	@NotEmpty
+
     @OneToMany(mappedBy = "apartamento")
     private List<Hidrometro> hidrometros;
 	

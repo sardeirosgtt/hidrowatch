@@ -44,8 +44,7 @@ public class Condominios {
 	@Nonnull
 	private String endereco;
 
-	@NotNull
-	@NotEmpty
+
 	@OneToMany(mappedBy = "condominios")
     private List<Bloco> blocos;
 }

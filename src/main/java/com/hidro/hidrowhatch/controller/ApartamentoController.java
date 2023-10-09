@@ -1,5 +1,6 @@
 package com.hidro.hidrowhatch.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hidro.hidrowhatch.dto.ApartamentoDTO;
 import com.hidro.hidrowhatch.dto.ApartamentoMapper;
-import com.hidro.hidrowhatch.dto.BlocoMapper;
 import com.hidro.hidrowhatch.model.Apartamento;
-import com.hidro.hidrowhatch.model.Bloco;
 import com.hidro.hidrowhatch.service.ApartamentoService;
 
 @RestController
@@ -62,4 +61,28 @@ public class ApartamentoController {
     public List<Apartamento> buscarApartamentosPorUsuario(@PathVariable Long usuarioId) {
         return apartamentoService.buscarApartamentosPorUsuario(usuarioId);
     }
+    
+    @GetMapping("/por-bloco/{blocoId}")
+    public List<ApartamentoDTO> listarApartamentosPorBloco(@PathVariable Long blocoId) {
+        List<Apartamento> apartamentos = apartamentoService.listarApartamentosPorBloco(blocoId);
+
+        // Filtra os apartamentos com usuário nulo
+        List<Apartamento> apartamentosComUsuarioNulo = new ArrayList<>();
+        for (Apartamento apartamento : apartamentos) {
+            if (apartamento.getUsuario() == null) {
+                apartamentosComUsuarioNulo.add(apartamento);
+            }
+        }
+
+        // Transforma a lista de Apartamento em uma lista de ApartamentoDTO
+        List<ApartamentoDTO> apartamentosDTO = new ArrayList<>();
+        for (Apartamento apartamento : apartamentosComUsuarioNulo) {
+            ApartamentoDTO dto = ApartamentoMapper.toApartamentoDTO(apartamento);
+            apartamentosDTO.add(dto);
+        }
+
+        return apartamentosDTO;
+    }
+
+    
 }

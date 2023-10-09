@@ -40,6 +40,11 @@ public class BlocoService {
         }
         return null;
     }
+    
+    public List<Bloco> listarBlocosPorCondominio(Long idCondominio) {
+        return blocoRepository.findByCondominiosId(idCondominio);
+    }
+
 }
 
 
