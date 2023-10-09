@@ -11,7 +11,20 @@ import com.hidro.hidrowhatch.model.UsuarioRole;
 @Component
 public class UsuarioMapper {
     public static UsuarioDTO toUsuarioDTO(Usuario usuario) {
-        return new UsuarioDTO(usuario.getId(), usuario.getCpf(), usuario.getNome(), usuario.getEmail(),usuario.getPassword(),usuario.getRole());
+        UsuarioDTO dto=  new UsuarioDTO();
+        		if (usuario!= null) {
+				dto.setId(usuario.getId());
+        		dto.setCpf(usuario.getCpf());
+        		dto.setNome(usuario.getNome());
+        		dto.setEmail(usuario.getEmail());
+        		dto.setPassword(usuario.getPassword());
+        		dto.setRole(usuario.getRole());
+        		return dto;
+				} else {
+					return null;
+				}
+        		
+        		
     }
 
     public static List<UsuarioDTO> toUsuarioDTOList(List<Usuario> usuarios) {

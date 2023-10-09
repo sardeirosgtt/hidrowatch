@@ -2,8 +2,6 @@ package com.hidro.hidrowhatch.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,8 +39,8 @@ public class Apartamento {
     private Bloco bloco;
     
 	
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "usuario_id")
+    @ManyToOne()
+    @JoinColumn(name = "usuario_id", nullable = true)
     private Usuario usuario;
     
 

@@ -36,6 +36,6 @@ public class Consumo {
 
 
     @ManyToOne
-    @JoinColumn(name = "apartamento_id")
+    @JoinColumn(name = "apartamento_id",nullable = true)
     private Apartamento apartamento;
 }

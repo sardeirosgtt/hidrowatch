@@ -52,16 +52,6 @@ public class ApartamentoController {
         apartamentoService.deletarApartamento(id);
     }
     
-    @GetMapping("por-condominio/{id}")
-    public List<Apartamento> buscarApartamentosPorCondominio(@PathVariable Long id) {
-    	return  apartamentoService.buscarApartamentosPorCondominio(id);
-    }
-    
-    @GetMapping("/por-usuario/{usuarioId}")
-    public List<Apartamento> buscarApartamentosPorUsuario(@PathVariable Long usuarioId) {
-        return apartamentoService.buscarApartamentosPorUsuario(usuarioId);
-    }
-    
     @GetMapping("/por-bloco/{blocoId}")
     public List<ApartamentoDTO> listarApartamentosPorBloco(@PathVariable Long blocoId) {
         List<Apartamento> apartamentos = apartamentoService.listarApartamentosPorBloco(blocoId);

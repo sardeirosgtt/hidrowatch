@@ -38,7 +38,7 @@ public class Hidrometro {
 
 
     @ManyToOne
-    @JoinColumn(name = "apartamento_id")
+    @JoinColumn(name = "apartamento_id", nullable = true)
     private Apartamento apartamento;
     
   

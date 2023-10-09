@@ -44,14 +44,7 @@ public class ApartamentoService {
         }
         return null;
     }
-    
-    public List<Apartamento> buscarApartamentosPorCondominio(Long condominioId) {
-        return apartamentoRepository.findByCondominioId(condominioId);
-    }
-    
-    public List<Apartamento> buscarApartamentosPorUsuario(Long usuarioId) {
-        return apartamentoRepository.findByUsuarioId(usuarioId);
-    }
+   
     public List<Apartamento> listarApartamentosPorBloco(Long blocoId) {
         return apartamentoRepository.findByBlocoId(blocoId);
     }
