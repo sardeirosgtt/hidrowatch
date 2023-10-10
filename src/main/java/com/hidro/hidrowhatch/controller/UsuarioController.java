@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,6 @@ import com.hidro.hidrowhatch.dto.LoginResponseDTO;
 import com.hidro.hidrowhatch.dto.UsuarioDTO;
 import com.hidro.hidrowhatch.dto.UsuarioMapper;
 import com.hidro.hidrowhatch.model.Usuario;
-import com.hidro.hidrowhatch.model.UsuarioRole;
-import com.hidro.hidrowhatch.repository.UsuarioRepository;
 import com.hidro.hidrowhatch.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -91,6 +90,17 @@ public class UsuarioController {
 		return ResponseEntity.ok(new LoginResponseDTO(token));
 		
 	}
+	
+	@GetMapping("/verificar-token")
+    public ResponseEntity<String> verificarToken(@RequestHeader("Authorization") String authorizationHeader) {
+		String token = authorizationHeader.replace("Bearer ", "");
+		String subject = tokenService.validateToken(token);
+        if (!subject.isEmpty()) {
+            return ResponseEntity.ok("Token válido. Subject: " + subject);
+        } else {
+            return ResponseEntity.ok("Token inválido.");
+        }
+    }
 }
 
 
