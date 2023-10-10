@@ -36,14 +36,12 @@ public class Hidrometro {
     @Enumerated(EnumType.STRING)
     private TipoHidrometro tipo;
 
-    @NotNull
-	@NotEmpty
+
     @ManyToOne
-    @JoinColumn(name = "apartamento_id")
+    @JoinColumn(name = "apartamento_id", nullable = true)
     private Apartamento apartamento;
     
-    @NotNull
-	@NotEmpty
+  
     @OneToMany(mappedBy = "hidrometro")
     private List<Leitura> leituras;
 }

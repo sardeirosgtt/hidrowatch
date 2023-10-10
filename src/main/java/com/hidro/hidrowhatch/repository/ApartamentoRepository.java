@@ -12,8 +12,6 @@ import com.hidro.hidrowhatch.model.Leitura;
 
 public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> {
 
-	@Query("SELECT a FROM Apartamento a WHERE a.bloco.condominios.id = :condominioId")
-    List<Apartamento> findByCondominioId(Long condominioId);
-	
-	List<Apartamento> findByUsuarioId(Long usuarioId);
+	@Query("SELECT a FROM Apartamento a WHERE a.bloco.id = :blocoId")
+	List<Apartamento> findByBlocoId(Long blocoId);
 }

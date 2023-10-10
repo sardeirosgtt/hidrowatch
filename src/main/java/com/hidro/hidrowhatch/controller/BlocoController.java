@@ -50,4 +50,9 @@ public class BlocoController {
     public void deletar(@PathVariable Long id) {
         blocoService.deletarBloco(id);
     }
+    @GetMapping("/por-condominio/{idCondominio}")
+    public List<BlocoDTO> listarPorCondominio(@PathVariable Long idCondominio) {
+        List<Bloco> blocos = blocoService.listarBlocosPorCondominio(idCondominio);
+        return BlocoMapper.toBlocoDTOList(blocos);
+    }
 }

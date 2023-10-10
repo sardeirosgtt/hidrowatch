@@ -34,9 +34,8 @@ public class Consumo {
 	@NotEmpty
     private LocalDateTime dataConsumo;
 
-    @NotNull
-	@NotEmpty
+
     @ManyToOne
-    @JoinColumn(name = "apartamento_id")
+    @JoinColumn(name = "apartamento_id",nullable = true)
     private Apartamento apartamento;
 }
