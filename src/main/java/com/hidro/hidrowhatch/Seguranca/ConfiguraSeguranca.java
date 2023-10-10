@@ -29,9 +29,9 @@ public class ConfiguraSeguranca {
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
 						.requestMatchers(HttpMethod.POST,"/usuarios/login").permitAll()
-						.requestMatchers(HttpMethod.GET,"/listar-condominios").permitAll()
-						.requestMatchers(HttpMethod.GET,"/por-bloco/{blocoId}").permitAll()
-						.requestMatchers(HttpMethod.GET,"/por-condominio/{idCondominio}").permitAll()
+						.requestMatchers(HttpMethod.GET,"/condominios/listar-condominios").permitAll()
+						.requestMatchers(HttpMethod.GET,"/apartamentos/por-bloco/{blocoId}").permitAll()
+						.requestMatchers(HttpMethod.GET,"/blocos/por-condominio/{idCondominio}").permitAll()
 						.anyRequest().authenticated()
 						)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
