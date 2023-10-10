@@ -30,7 +30,7 @@ public class CondominioController {
     @Autowired
     private CondominioService condominioService;
 
-    @GetMapping
+    @GetMapping("/listar-condominios")
     public ResponseEntity<List<CondominioDTO>> listar() {
     	List<Condominios> condominios = condominioService.listarCondominios();
         List<CondominioDTO> condominioDTO = CondominioMapper.toCondominioDTOList(condominios);

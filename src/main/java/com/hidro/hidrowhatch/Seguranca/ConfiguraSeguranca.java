@@ -29,7 +29,10 @@ public class ConfiguraSeguranca {
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
 						.requestMatchers(HttpMethod.POST,"/usuarios/login").permitAll()
-						.anyRequest().permitAll()
+						.requestMatchers(HttpMethod.GET,"/listar-condominios").permitAll()
+						.requestMatchers(HttpMethod.GET,"/por-bloco/{blocoId}").permitAll()
+						.requestMatchers(HttpMethod.GET,"/por-condominio/{idCondominio}").permitAll()
+						.anyRequest().authenticated()
 						)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .cors()
