@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hidro.hidrowhatch.dto.ApartamentoDTO;
+import com.hidro.hidrowhatch.dto.UsuarioMapper;
 import com.hidro.hidrowhatch.model.Apartamento;
 import com.hidro.hidrowhatch.model.Bloco;
 import com.hidro.hidrowhatch.repository.ApartamentoRepository;
@@ -31,19 +33,20 @@ public class ApartamentoService {
         apartamentoRepository.deleteById(id);
     }
 
-    public Apartamento editarApartamento(Long id, Apartamento novoApartamento) {
+    public Apartamento editarApartamento(Long id, ApartamentoDTO novoApartamentoDTO) {
         Apartamento apartamentoExistente = apartamentoRepository.findById(id).orElse(null);
         if (apartamentoExistente != null) {
-        	// Faça as atualizações necessárias no objeto apartamentoExistente com base no novoApartamento
-            apartamentoExistente.setNumero(novoApartamento.getNumero());
-            apartamentoExistente.setAndar(novoApartamento.getAndar());
-            apartamentoExistente.setBloco(novoApartamento.getBloco());
-            apartamentoExistente.setUsuario(novoApartamento.getUsuario());
-            // ...
+            // Faça as atualizações necessárias no objeto apartamentoExistente com base no novoApartamentoDTO
+            apartamentoExistente.setNumero(novoApartamentoDTO.getNumero());
+            apartamentoExistente.setAndar(novoApartamentoDTO.getAndar());
+            apartamentoExistente.setUsuario(UsuarioMapper.toUsuario(novoApartamentoDTO.getUsuario()));
+            
+            // Outras atualizações, se necessário
             return apartamentoRepository.save(apartamentoExistente);
         }
         return null;
     }
+
    
     public List<Apartamento> listarApartamentosPorBloco(Long blocoId) {
         return apartamentoRepository.findByBlocoId(blocoId);

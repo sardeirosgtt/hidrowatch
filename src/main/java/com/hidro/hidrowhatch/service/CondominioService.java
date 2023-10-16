@@ -68,7 +68,7 @@ public class CondominioService {
             Bloco bloco = new Bloco();
             bloco.setNumero("Bloco " + i);
             bloco.setQtdAndar(request.getNumeroDeAndaresPorBloco());
-            bloco.setCondominios(condominio);  // Associe o bloco ao condomínio
+            bloco.setCondominios(condominio);
 
             // Salve o bloco no repositório de blocos
             bloco = blocoService.salvarBloco(bloco);

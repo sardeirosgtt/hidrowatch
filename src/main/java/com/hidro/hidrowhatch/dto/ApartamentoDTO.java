@@ -1,7 +1,5 @@
 package com.hidro.hidrowhatch.dto;
 
-import com.hidro.hidrowhatch.model.Usuario;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -12,7 +12,7 @@ public class ConsumoMapper {
             dto.setId(consumo.getId());
             dto.setValor(consumo.getValor());
             dto.setDataConsumo(consumo.getDataConsumo());
-            dto.setApartamento(ApartamentoMapper.toApartamentoDTO(consumo.getApartamento()));
+            dto.setApartamentoDTO(ApartamentoMapper.toApartamentoDTO(consumo.getApartamento()) );
             return dto;
     }
 

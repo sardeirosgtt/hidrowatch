@@ -18,5 +18,5 @@ public class ConsumoDTO {
 	private Long id;
 	private Double valor;
 	private LocalDateTime dataConsumo;
-	private ApartamentoDTO apartamento;
+	private ApartamentoDTO apartamentoDTO;
 }

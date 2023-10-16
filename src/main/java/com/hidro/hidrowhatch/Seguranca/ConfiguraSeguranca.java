@@ -32,7 +32,7 @@ public class ConfiguraSeguranca {
 						.requestMatchers(HttpMethod.GET,"/condominios/listar-condominios").permitAll()
 						.requestMatchers(HttpMethod.GET,"/apartamentos/por-bloco/{blocoId}").permitAll()
 						.requestMatchers(HttpMethod.GET,"/blocos/por-condominio/{idCondominio}").permitAll()
-						.anyRequest().authenticated()
+						.anyRequest().permitAll()
 						)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .cors()

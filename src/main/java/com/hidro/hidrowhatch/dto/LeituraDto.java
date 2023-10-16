@@ -20,6 +20,6 @@ public class LeituraDto {
     private Long id;
     private Double valor;
     private LocalDateTime dataLeitura;
-    private HidrometroDTO hidrometro;
+    private HidrometroDTO hidrometroDTO;
 
 }
