@@ -26,6 +26,18 @@ public class UsuarioMapper {
         		
         		
     }
+    
+    public static Usuario toUsuario(UsuarioDTO usuarioDTO) {
+    	Usuario usuario = new Usuario();
+        		
+        		usuario.setId(usuarioDTO.getId());
+        		usuario.setCpf(usuarioDTO.getCpf());
+        		usuario.setNome(usuarioDTO.getNome());
+        		usuario.setEmail(usuarioDTO.getEmail());
+        		usuario.setPassword(usuarioDTO.getPassword());
+        		usuario.setRole(usuarioDTO.getRole());
+        		return usuario;   		
+    }
 
     public static List<UsuarioDTO> toUsuarioDTOList(List<Usuario> usuarios) {
         return usuarios.stream().map(UsuarioMapper::toUsuarioDTO).collect(Collectors.toList());

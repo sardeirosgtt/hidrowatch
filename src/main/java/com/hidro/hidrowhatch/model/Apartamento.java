@@ -2,6 +2,8 @@ package com.hidro.hidrowhatch.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,12 +27,9 @@ public class Apartamento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
-	@NotEmpty
 	private String numero;
 	
 	@NotNull
-	@NotEmpty
     private Integer andar;
 
 
@@ -41,6 +40,7 @@ public class Apartamento {
 	
     @ManyToOne()
     @JoinColumn(name = "usuario_id", nullable = true)
+    @JsonBackReference
     private Usuario usuario;
     
 

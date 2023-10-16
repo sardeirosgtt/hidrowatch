@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hidro.hidrowhatch.model.Apartamento;
 import com.hidro.hidrowhatch.model.Consumo;
 import com.hidro.hidrowhatch.model.Hidrometro;
 import com.hidro.hidrowhatch.model.Leitura;
+import com.hidro.hidrowhatch.repository.ApartamentoRepository;
 import com.hidro.hidrowhatch.repository.ConsumoRepository;
 import com.hidro.hidrowhatch.repository.LeituraRepository;
 
@@ -19,6 +21,7 @@ public class LeituraService {
 
     @Autowired
     private ConsumoRepository consumoRepository;
+    
 
     public List<Leitura> listarLeituras() {
         return leituraRepository.findAll();
@@ -74,6 +77,8 @@ public class LeituraService {
         // Salva a nova leitura
         return leituraRepository.save(leitura);
     }
+
+
 
 
 

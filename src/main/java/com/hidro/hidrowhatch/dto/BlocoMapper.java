@@ -11,7 +11,7 @@ public class BlocoMapper {
 	    		dto.setId(bloco.getId()); 
 	    		dto.setNumero(bloco.getNumero());	
 	    		dto.setQtdAndar(bloco.getQtdAndar());
-	    		dto.setCondominio(CondominioMapper.toCondominioDTO(bloco.getCondominios()));
+	    		dto.setCondominioDTO(CondominioMapper.toCondominioDTO(bloco.getCondominios()));
 	    		return dto;
 	}
 

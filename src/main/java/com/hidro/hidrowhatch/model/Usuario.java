@@ -54,6 +54,7 @@ public class Usuario implements UserDetails {
 	
 
 	@OneToMany(mappedBy = "usuario")
+	@JsonManagedReference
     private List<Apartamento> apartamentos;
 
 	

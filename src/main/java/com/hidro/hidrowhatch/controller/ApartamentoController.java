@@ -43,8 +43,9 @@ public class ApartamentoController {
     }
 
     @PutMapping("/{id}")
-    public Apartamento editar(@PathVariable Long id, @RequestBody Apartamento apartamento) {
-        return apartamentoService.editarApartamento(id, apartamento);
+    public ApartamentoDTO editar(@PathVariable Long id, @RequestBody ApartamentoDTO novoApartamentoDTO) {
+        Apartamento apartamento = apartamentoService.editarApartamento(id, novoApartamentoDTO);
+        return ApartamentoMapper.toApartamentoDTO(apartamento);
     }
 
     @DeleteMapping("/{id}")
