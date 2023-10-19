@@ -65,6 +65,12 @@ public class UsuarioController {
         UsuarioDTO usuarioDTO = UsuarioMapper.toUsuarioDTO(usuario);
         return ResponseEntity.ok(usuarioDTO);
     }
+    @GetMapping("/buscar-por-email/{email}")
+    public ResponseEntity<UsuarioDTO> buscarPoremail(@PathVariable String email) {
+    	Usuario usuario = (Usuario) service.buscarPorEmail(email);
+        UsuarioDTO usuarioDTO = UsuarioMapper.toUsuarioDTO(usuario);
+        return ResponseEntity.ok(usuarioDTO);
+    }
 
     @PutMapping("/{id}")
     public Usuario atualizar(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
@@ -76,9 +82,6 @@ public class UsuarioController {
         service.deletar(id);
     }
     
-    public Boolean validarCampos(Usuario usuario) {
-    	return true;
-    }
     
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
