@@ -16,6 +16,6 @@ public class BlocoDTO {
 	private Long id;
 	private String numero;
 	private int qtdAndar;
-	private CondominioDTO condominioDTO;
+	private CondominioDTO condominio;
 	
 }

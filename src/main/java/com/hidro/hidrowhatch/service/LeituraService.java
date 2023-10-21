@@ -1,5 +1,6 @@
 package com.hidro.hidrowhatch.service;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,54 +32,30 @@ public class LeituraService {
         return leituraRepository.findById(id).orElse(null);
     }
 
-    public Leitura salvarLeituraComCalculo(Leitura leitura) {
-        // Busca a última leitura para o mesmo hidrômetro
-        Leitura leituraAnterior = leituraRepository.findLatestByHidrometro(leitura.getHidrometro());
+    public Leitura salvarLeituraPorHidrometro(Leitura leitura) {
+        List<Leitura> leituras = leituraRepository.findLatestByHidrometro(leitura.getHidrometro());
 
-        // Verifica se o apartamento associado ao hidrômetro tem pelo menos dois hidrômetros
-        if (leituraAnterior != null && leitura.getHidrometro().getApartamento().getHidrometros().size() >= 2) {
-            // Calcula o consumo (leitura atual - leitura anterior)
+        if (!leituras.isEmpty()) {
+            // Ordena a lista para que a leitura mais recente seja a primeira.
+            leituras.sort(Comparator.comparing(Leitura::getDataLeitura).reversed());
+
+            // Obtém a leitura mais recente da lista.
+            Leitura leituraAnterior = leituras.get(0);
+            
             double consumoValor = leitura.getValor() - leituraAnterior.getValor();
-
-            // Cria um novo consumo para o hidrômetro atual
+            
             Consumo consumo = new Consumo();
             consumo.setValor(consumoValor);
-            consumo.setDataConsumo(leitura.getDataLeitura()); // Use a data da leitura como data de consumo
+            consumo.setDataConsumo(leitura.getDataLeitura());
             consumo.setApartamento(leitura.getHidrometro().getApartamento());
-
-            // Salva o consumo para o hidrômetro atual
+            consumo.setLeituraAnterior(leituraAnterior.getValor());
+            consumo.setLeituraAtual(leitura.getValor());
+            
             consumoRepository.save(consumo);
-
-            // Verifica se há mais de um hidrômetro no mesmo apartamento
-            List<Hidrometro> hidrometros = leitura.getHidrometro().getApartamento().getHidrometros();
-            if (hidrometros.size() >= 2) {
-                // Calcula o consumo para o segundo hidrômetro
-                Hidrometro outroHidrometro = hidrometros.stream()
-                    .filter(h -> !h.getId().equals(leitura.getHidrometro().getId())) // Exclui o hidrômetro atual
-                    .findFirst()
-                    .orElse(null);
-
-                if (outroHidrometro != null) {
-                    // Calcula o consumo para o segundo hidrômetro (leitura atual - leitura anterior)
-                    double consumoOutroValor = leitura.getValor() - leituraAnterior.getValor();
-
-                    // Cria um novo consumo para o segundo hidrômetro
-                    Consumo consumoOutro = new Consumo();
-                    consumoOutro.setValor(consumoOutroValor);
-                    consumoOutro.setDataConsumo(leitura.getDataLeitura()); // Use a data da leitura como data de consumo
-                    consumoOutro.setApartamento(leitura.getHidrometro().getApartamento());
-
-                    // Salva o consumo para o segundo hidrômetro
-                    consumoRepository.save(consumoOutro);
-                }
-            }
         }
-
-        // Salva a nova leitura
+        
         return leituraRepository.save(leitura);
     }
-
-
 
 
 

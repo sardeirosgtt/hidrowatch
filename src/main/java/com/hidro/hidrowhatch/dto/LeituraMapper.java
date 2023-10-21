@@ -12,7 +12,7 @@ public class LeituraMapper {
 		dto.setId(leitura.getId());
 		dto.setValor(leitura.getValor());
 		dto.setDataLeitura(leitura.getDataLeitura());
-		dto.setHidrometroDTO(HidrometroMapper.toHidrometroDTO(leitura.getHidrometro()));
+		dto.setHidrometro(HidrometroMapper.toHidrometroDTO(leitura.getHidrometro()));
 		return dto; 
 	}
 

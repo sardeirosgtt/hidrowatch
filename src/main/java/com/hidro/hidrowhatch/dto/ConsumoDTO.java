@@ -17,6 +17,8 @@ public class ConsumoDTO {
 
 	private Long id;
 	private Double valor;
-	private LocalDateTime dataConsumo;
-	private ApartamentoDTO apartamentoDTO;
+	private String dataConsumo;
+	private Double leituraAnterior;  
+    private Double leituraAtual;
+	private ApartamentoDTO apartamento;
 }
