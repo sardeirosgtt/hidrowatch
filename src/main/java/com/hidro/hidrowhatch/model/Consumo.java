@@ -38,9 +38,8 @@ public class Consumo {
     
     private Double leituraAtual;
 
-
     @ManyToOne
-    @JoinColumn(name = "apartamento_id")
+    @JoinColumn(name = "hidrometro_id")
     @NotNull
-    private Apartamento apartamento;
+    private Hidrometro hidrometro;
 }

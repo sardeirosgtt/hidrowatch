@@ -34,7 +34,7 @@ public class ConsumoService {
         if (consumoExistente != null) {
             consumoExistente.setValor(novoConsumo.getValor());
             consumoExistente.setDataConsumo(novoConsumo.getDataConsumo());
-            consumoExistente.setApartamento(novoConsumo.getApartamento());
+            consumoExistente.setHidrometro(novoConsumo.getHidrometro());
             return consumoRepository.save(consumoExistente);
         }
         return null;

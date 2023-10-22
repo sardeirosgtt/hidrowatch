@@ -47,7 +47,7 @@ public class LeituraService {
             Consumo consumo = new Consumo();
             consumo.setValor(consumoValor);
             consumo.setDataConsumo(leitura.getDataLeitura());
-            consumo.setApartamento(leitura.getHidrometro().getApartamento());
+            consumo.setHidrometro(leitura.getHidrometro());
             consumo.setLeituraAnterior(leituraAnterior.getValor());
             consumo.setLeituraAtual(leitura.getValor());
             

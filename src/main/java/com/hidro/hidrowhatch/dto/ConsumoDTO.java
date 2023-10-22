@@ -1,9 +1,5 @@
 package com.hidro.hidrowhatch.dto;
 
-import java.time.LocalDateTime;
-
-import com.hidro.hidrowhatch.model.Apartamento;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,5 +16,5 @@ public class ConsumoDTO {
 	private String dataConsumo;
 	private Double leituraAnterior;  
     private Double leituraAtual;
-	private ApartamentoDTO apartamento;
+	private HidrometroDTO hidrometro;
 }
