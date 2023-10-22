@@ -34,7 +34,7 @@ public class LeituraController {
 
     @PostMapping
     public Leitura salvar(@RequestBody Leitura leitura) {
-        return leituraService.salvarLeituraComCalculo(leitura);
+        return leituraService.salvarLeituraPorHidrometro(leitura);
     }
 
     @PutMapping("/{id}")

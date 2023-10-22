@@ -1,5 +1,7 @@
 package com.hidro.hidrowhatch.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +15,8 @@ import com.hidro.hidrowhatch.model.Leitura;
 public interface LeituraRepository extends JpaRepository<Leitura, Long> {
 	
 	@Query("SELECT l FROM Leitura l WHERE l.hidrometro = :hidrometro ORDER BY l.dataLeitura DESC")
-    Leitura findLatestByHidrometro(@Param("hidrometro") Hidrometro hidrometro);
+	List<Leitura> findLatestByHidrometro(@Param("hidrometro") Hidrometro hidrometro);
+
+
 	
 }

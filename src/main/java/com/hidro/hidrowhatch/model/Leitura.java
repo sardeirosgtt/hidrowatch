@@ -3,6 +3,10 @@ package com.hidro.hidrowhatch.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,11 +31,10 @@ public class Leitura {
     private Long id;
     
     @NotNull
-	@NotEmpty
     private Double valor;
+    
     @NotNull
-	@NotEmpty
-    private LocalDateTime dataLeitura;
+    private String dataLeitura;
     
  
     @ManyToOne

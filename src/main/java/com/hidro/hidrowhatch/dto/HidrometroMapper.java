@@ -13,7 +13,7 @@ public class HidrometroMapper {
             dto.setId(hidrometro.getId());
             dto.setNumero(hidrometro.getNumero());
             dto.setTipo(hidrometro.getTipo());
-            dto.setApartamentoDTO(ApartamentoMapper.toApartamentoDTO(hidrometro.getApartamento()) );
+            dto.setApartamento(ApartamentoMapper.toApartamentoDTO(hidrometro.getApartamento()) );
             return dto;
         
     }

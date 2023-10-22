@@ -14,4 +14,7 @@ public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> 
 
 	@Query("SELECT a FROM Apartamento a WHERE a.bloco.id = :blocoId")
 	List<Apartamento> findByBlocoId(Long blocoId);
+	
+	@Query("SELECT a FROM Apartamento a WHERE a.usuario.id = :usuarioId")
+	List<Apartamento> findByUsuarioId(Long usuarioId);
 }

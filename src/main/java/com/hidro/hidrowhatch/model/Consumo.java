@@ -27,15 +27,19 @@ public class Consumo {
     private Long id;
 
     @NotNull
-	@NotEmpty
     private Double valor;
 
     @NotNull
-	@NotEmpty
-    private LocalDateTime dataConsumo;
+    private String dataConsumo;
+    
+    
+    private Double leituraAnterior;
 
+    
+    private Double leituraAtual;
 
     @ManyToOne
-    @JoinColumn(name = "apartamento_id",nullable = true)
-    private Apartamento apartamento;
+    @JoinColumn(name = "hidrometro_id")
+    @NotNull
+    private Hidrometro hidrometro;
 }

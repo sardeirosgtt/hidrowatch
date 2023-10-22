@@ -32,6 +32,11 @@ public class ApartamentoService {
     public void deletarApartamento(Long id) {
         apartamentoRepository.deleteById(id);
     }
+    
+    public List<Apartamento> ListarApartamentoPorUsuario(Long id) {
+       return apartamentoRepository.findByUsuarioId(id);
+    }
+    
 
     public Apartamento editarApartamento(Long id, ApartamentoDTO novoApartamentoDTO) {
         Apartamento apartamentoExistente = apartamentoRepository.findById(id).orElse(null);

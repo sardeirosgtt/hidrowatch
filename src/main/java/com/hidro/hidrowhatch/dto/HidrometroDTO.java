@@ -25,5 +25,5 @@ public class HidrometroDTO {
     private Long id;
     private String numero;
     private TipoHidrometro tipo;
-    private ApartamentoDTO apartamentoDTO;
+    private ApartamentoDTO apartamento;
 }
