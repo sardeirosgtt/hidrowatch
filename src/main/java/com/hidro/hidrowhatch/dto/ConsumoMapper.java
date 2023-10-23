@@ -14,6 +14,7 @@ public class ConsumoMapper {
             dto.setDataConsumo(consumo.getDataConsumo());
             dto.setLeituraAnterior(consumo.getLeituraAnterior());
             dto.setLeituraAtual(consumo.getLeituraAtual());
+            dto.setValorReal(consumo.getValorReal());
             dto.setHidrometro(HidrometroMapper.toHidrometroDTO(consumo.getHidrometro()));
             return dto;
     }

@@ -73,4 +73,9 @@ public class LeituraService {
         }
         return null;
     }
+    
+    public double calcularValorReal(Double consumo) {
+    	
+		return consumo;
+    }
 }
