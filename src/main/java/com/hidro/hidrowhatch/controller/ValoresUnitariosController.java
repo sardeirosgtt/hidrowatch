@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hidro.hidrowhatch.model.Usuario;
 import com.hidro.hidrowhatch.model.ValoresUnitarios;
 import com.hidro.hidrowhatch.service.ValoresUnitariosService;
 

@@ -30,6 +30,12 @@ public class LeituraController {
     	Leitura leitura = leituraService.buscarLeituraPorId(id);
         return LeituraMapper.toLeituraDto(leitura);
     }
+    
+    @GetMapping("/calcular/{valor}")
+    public double calcular(@PathVariable Double valor) {
+    	return leituraService.calcularValorReal(valor);
+        
+    }
 
 
     @PostMapping
