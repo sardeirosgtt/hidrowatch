@@ -3,7 +3,6 @@ package com.hidro.hidrowhatch.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.hidro.hidrowhatch.model.Bloco;
 import com.hidro.hidrowhatch.model.Leitura;
 
 public class LeituraMapper {

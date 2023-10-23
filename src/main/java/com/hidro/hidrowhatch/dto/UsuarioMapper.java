@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.hidro.hidrowhatch.model.Usuario;
-import com.hidro.hidrowhatch.model.UsuarioRole;
 
 @Component
 public class UsuarioMapper {

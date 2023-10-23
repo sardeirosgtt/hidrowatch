@@ -16,5 +16,6 @@ public class ConsumoDTO {
 	private String dataConsumo;
 	private Double leituraAnterior;  
     private Double leituraAtual;
+    private Double valorReal;
 	private HidrometroDTO hidrometro;
 }

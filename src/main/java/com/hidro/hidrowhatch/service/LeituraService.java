@@ -1,18 +1,18 @@
 package com.hidro.hidrowhatch.service;
 
+import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hidro.hidrowhatch.model.Apartamento;
 import com.hidro.hidrowhatch.model.Consumo;
-import com.hidro.hidrowhatch.model.Hidrometro;
 import com.hidro.hidrowhatch.model.Leitura;
-import com.hidro.hidrowhatch.repository.ApartamentoRepository;
+import com.hidro.hidrowhatch.model.ValoresUnitarios;
 import com.hidro.hidrowhatch.repository.ConsumoRepository;
 import com.hidro.hidrowhatch.repository.LeituraRepository;
+import com.hidro.hidrowhatch.repository.ValoresUnitariosRepository;
 
 @Service
 public class LeituraService {
@@ -22,6 +22,9 @@ public class LeituraService {
 
     @Autowired
     private ConsumoRepository consumoRepository;
+    
+    @Autowired
+    private ValoresUnitariosRepository valoresRepository;
     
 
     public List<Leitura> listarLeituras() {
@@ -44,8 +47,11 @@ public class LeituraService {
             
             double consumoValor = leitura.getValor() - leituraAnterior.getValor();
             
+            Double ValorR  = calcularValorReal(consumoValor);
+            
             Consumo consumo = new Consumo();
             consumo.setValor(consumoValor);
+            consumo.setValorReal(ValorR);
             consumo.setDataConsumo(leitura.getDataLeitura());
             consumo.setHidrometro(leitura.getHidrometro());
             consumo.setLeituraAnterior(leituraAnterior.getValor());
@@ -72,5 +78,50 @@ public class LeituraService {
             return leituraRepository.save(leituraExistente);
         }
         return null;
+    }
+    
+    public double calcularValorReal(Double consumo) {
+    	ValoresUnitarios valores = valoresRepository.findEntityWithMaxId();
+    	Double valor=0.0;
+    	if(consumo>=valores.getTamanhoFaixa1()) {
+    		valor+=valores.getTamanhoFaixa1()*valores.getValorFaixa1();
+    		consumo-=valores.getTamanhoFaixa1();
+    		if(consumo>=valores.getTamanhoFaixa2()) {
+    			valor+=valores.getTamanhoFaixa2()*valores.getValorFaixa2();
+    			consumo-=valores.getTamanhoFaixa2();
+    			if(consumo>=valores.getTamanhoFaixa3()) {
+    				valor+=valores.getTamanhoFaixa3()*valores.getValorFaixa3();
+        			consumo-=valores.getTamanhoFaixa3();
+        			if(consumo>=valores.getTamanhoFaixa4()) {
+        				valor+=valores.getTamanhoFaixa4()*valores.getValorFaixa4();
+            			consumo-=valores.getTamanhoFaixa4();
+            			if(consumo>=valores.getTamanhoFaixa5()) {
+            				valor+=valores.getTamanhoFaixa5()*valores.getValorFaixa5();
+                			consumo-=valores.getTamanhoFaixa5();
+                			if(consumo>0) {
+                				valor+=consumo*valores.getValorFaixa6();
+                				valor+=valores.getTaxaFixa();
+                			}
+                		}else {
+                			valor+=consumo*valores.getValorFaixa5();
+                			valor+=valores.getTaxaFixa();
+                			}
+        			}else {
+        				valor+=consumo*valores.getValorFaixa4();
+        				valor+=valores.getTaxaFixa();
+        			}
+    			}else {
+    				valor+=consumo*valores.getValorFaixa3();
+    				valor+=valores.getTaxaFixa();
+    			}
+    		}else {
+    			valor+=consumo*valores.getValorFaixa2();	
+    			valor+=valores.getTaxaFixa();
+    		}
+    	}else{
+    		valor+=consumo*valores.getValorFaixa1();
+    		valor+=valores.getTaxaFixa();
+		}
+		return valor*2;
     }
 }
