@@ -12,7 +12,11 @@ public class ApartamentoMapper {
         dto.setNumero(apartamento.getNumero());
         dto.setAndar(apartamento.getAndar());
         dto.setBloco(BlocoMapper.toBlocoDTO(apartamento.getBloco()));
+        if(apartamento.getUsuario()!=null) {
         dto.setUsuario(UsuarioMapper.toUsuarioDTO(apartamento.getUsuario()));
+        }else {
+        	dto.setUsuario(null);
+        }
         return dto;
     }
 

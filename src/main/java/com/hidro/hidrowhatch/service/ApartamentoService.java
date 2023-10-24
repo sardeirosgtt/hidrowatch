@@ -44,8 +44,11 @@ public class ApartamentoService {
             // Faça as atualizações necessárias no objeto apartamentoExistente com base no novoApartamentoDTO
             apartamentoExistente.setNumero(novoApartamentoDTO.getNumero());
             apartamentoExistente.setAndar(novoApartamentoDTO.getAndar());
+            if(novoApartamentoDTO.getUsuario()!=null) {
             apartamentoExistente.setUsuario(UsuarioMapper.toUsuario(novoApartamentoDTO.getUsuario()));
-            
+            }else {
+            	apartamentoExistente.setUsuario(null);
+            }
             // Outras atualizações, se necessário
             return apartamentoRepository.save(apartamentoExistente);
         }
