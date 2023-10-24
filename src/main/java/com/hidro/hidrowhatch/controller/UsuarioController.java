@@ -77,7 +77,7 @@ public class UsuarioController {
         return service.atualizar(id, usuarioAtualizado);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/excluir-usuario/{id}")
     public void deletar(@PathVariable Long id) {
         service.deletar(id);
     }
