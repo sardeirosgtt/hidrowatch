@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.hidro.hidrowhatch.model.RelUsuarioApartamento;
+import com.hidro.hidrowhatch.model.RelUsuarioApartamentoId;
 import com.hidro.hidrowhatch.model.Usuario;
 import com.hidro.hidrowhatch.repository.UsuarioRepository;
 
